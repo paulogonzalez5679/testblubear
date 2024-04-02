@@ -4,6 +4,11 @@
 Pasos de instalacion:
 1. ejecutar npm install -g @angular/cli
 2. verificar con el comando ng version
+
+## Version de Ionic
+ 6.0.0
+se puede instalar con el comando: 
+- npm install @ionic/angular@6
    
 ## Version de Node
  20.7.0
