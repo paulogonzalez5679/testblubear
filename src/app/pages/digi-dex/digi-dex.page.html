@@ -1,0 +1,78 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Detalles del Digimon
+    </ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/" text="Atrás"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="digimonDetails">
+  <ion-card>
+    <img [src]="digimonDetails.images[0]?.href" style="margin-left: 1.5rem;" alt="Digimon Image">
+    <ion-card-header>
+      <ion-card-title>{{ digimonDetails.name }}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-list *ngIf="digimonDetails.levels && digimonDetails.levels.length > 0">
+        <ion-list-header>Nivel</ion-list-header>
+        <ion-item *ngFor="let level of digimonDetails.levels">
+          <ion-label>{{ level.level }}</ion-label>
+        </ion-item>
+      </ion-list>
+
+      <ion-list *ngIf="digimonDetails.attributes && digimonDetails.attributes.length > 0">
+        <ion-list-header>Atributo</ion-list-header>
+        <ion-item *ngFor="let attribute of digimonDetails.attributes">
+          <ion-label>{{ attribute.attribute }}</ion-label>
+        </ion-item>
+      </ion-list>
+
+      <ion-list *ngIf="digimonDetails.types && digimonDetails.types.length > 0">
+        <ion-list-header>Tipo</ion-list-header>
+        <ion-item *ngFor="let type of digimonDetails.types">
+          <ion-label>{{ type.type }}</ion-label>
+        </ion-item>
+      </ion-list>
+
+      <ion-list *ngIf="digimonDetails.releaseDate">
+        <ion-list-header>Fecha de Lanzamiento</ion-list-header>
+        <ion-item>
+          <ion-label>{{ digimonDetails.releaseDate }}</ion-label>
+        </ion-item>
+      </ion-list>
+
+      <ion-list *ngIf="digimonDetails.descriptions && digimonDetails.descriptions.length > 0">
+        <ion-list-header>Descripciones</ion-list-header>
+        <ion-item *ngFor="let description of digimonDetails.descriptions">
+          <ion-label>
+            <h3>{{ description.origin }}</h3>
+            <p>{{ description.language }}</p>
+            <p>{{ description.description }}</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+
+      <ion-list *ngIf="digimonDetails.skills && digimonDetails.skills.length > 0">
+        <ion-list-header>Habilidades</ion-list-header>
+        <ion-item *ngFor="let skill of digimonDetails.skills">
+          <ion-label>
+            <h3>{{ skill.skill }}</h3>
+            <p>{{ skill.translation }}</p>
+            <p>{{ skill.description }}</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+
+
+<ion-footer>
+  <ion-toolbar>
+
+  </ion-toolbar>
+</ion-footer>

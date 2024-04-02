@@ -1,0 +1,47 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Digi API
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="credentials" (ngSubmit)="login()" *ngIf="loginState" class="form-container">
+    <ion-item >
+      <ion-label position="floating">Correo</ion-label>
+      <ion-input type="email" formControlName="email"></ion-input>
+      <ion-note slot="error" *ngIf="(email!.dirty || email!.touched) && email!.errors">Correo inválido</ion-note>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Contraseña</ion-label>
+      <ion-input type="password" placeholder="" formControlName="password"></ion-input>
+    </ion-item>
+    <br/><br/>
+    <ion-button type="submit" expand="block" [disabled]="credentials.invalid">Ingresar</ion-button>
+    <p>Aún no eres miembro? <a (click)="changeState('register')" class="sign-in">Regístrate!</a></p>
+  </form>
+
+  <form [formGroup]="registerData" (ngSubmit)="register()" *ngIf="registerState" class="form-container">
+    <ion-item >
+      <ion-label position="floating">Nombre</ion-label>
+      <ion-input type="text" formControlName="nameRegister"></ion-input>
+      <ion-note slot="error" *ngIf="(nameRegister!.dirty || nameRegister!.touched) && nameRegister!.errors">Campo Obligatorio</ion-note>
+    </ion-item>
+    <ion-item >
+      <ion-label position="floating">Correo</ion-label>
+      <ion-input type="email" formControlName="emailRegister"></ion-input>
+      <ion-note slot="error" *ngIf="(emailRegister!.dirty || emailRegister!.touched) && email!.errors">Correo inválido</ion-note>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Contraseña</ion-label>
+      <ion-input type="password" placeholder="" formControlName="passwordRegister"></ion-input>
+      <ion-note slot="error" *ngIf="(passwordRegister!.dirty || passwordRegister!.touched || passwordRegister!.value < 6) && passwordRegister!.errors">La contraseña debe tener al menos 6 digitos</ion-note>
+    </ion-item>
+    <br/><br/>
+    <ion-button type="submit" expand="block" [disabled]="registerData.invalid">Registrarse</ion-button>
+    <p>ya no eres miembro? <a (click)="changeState('login')" class="sign-in">Ingresa!</a></p>
+  </form>
+
+
+</ion-content>
